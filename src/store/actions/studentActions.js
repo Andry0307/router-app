@@ -1,5 +1,5 @@
-export const GET_GROUP_TO_STUDENT = 'GET_GROUP_TO_STUDENT';
+export const SAVE_STUDENT = 'SAVE_STUDENT';
 
-export function getGroupToStudent() {
-    return {type: GET_GROUP_TO_STUDENT}
+export function saveStudent(value) {
+    return {type: SAVE_STUDENT, payload: value}
 }

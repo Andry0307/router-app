@@ -1,4 +1,4 @@
-import {GET_GROUP_TO_STUDENT} from '../actions/studentActions';
+import {SAVE_STUDENT} from '../actions/studentActions';
 
 const initState = {
     list: [
@@ -25,11 +25,26 @@ const initState = {
     ]
 };
 
-export default function (state = initState, action) {
-    console.log('ACTION', action, 'state', state);
-    switch (action.type) {
-        case GET_GROUP_TO_STUDENT:
-            return state;
+function addNewStudent(state, payload) {
+    return {
+        ...state, list: [...state.list,
+            {id: Date.now(), groupId: payload.groupId, name: payload.name}]
+    }
+}
+
+function editStudent(state, payload) {
+    return {
+        ...state, list: state.list.map(item => {
+            return item.id === payload.id ? payload : item;
+        })
+    }
+}
+
+export default function (state = initState, {type, payload}) {
+    console.log('ACTION', type, 'state', state);
+    switch (type) {
+        case SAVE_STUDENT:
+            return payload.id ? editStudent(state, payload) : addNewStudent(state, payload);
         default:
             return state;
     }

@@ -9,19 +9,14 @@ function GroupForm({item, onSave}) {
     const [groupItem, setGroupItem] = useState(item);
 
     const  history  = useHistory();
-    console.log('history', history);
 
     function onSaveClick(e) {
         e.preventDefault();
-        onSave({
-            id: groupItem.id,
-            groupId: groupItem.groupId,
-            name: groupItem.name
-        });
+        onSave(groupItem);
         history.goBack();
     }
 
-    function onchangeValue(target) {
+    function onChangeValue(target) {
         setGroupItem({
             ...groupItem,
             ...{[target.name]: target.value}
@@ -34,13 +29,13 @@ function GroupForm({item, onSave}) {
                    placeholder='name'
                    name='name'
                    value={groupItem.name}
-                   onChange={({target})=> onchangeValue(target)}
+                   onChange={({target})=> onChangeValue(target)}
             />
             <input className='form-control form-control-lg' type='text'
                    placeholder='groupId'
                    name='groupId'
                    value={groupItem.groupId}
-                   onChange={({target}) => onchangeValue(target)}
+                   onChange={({target}) => onChangeValue(target)}
             />
             <button className='btn btn-success' onClick={onSaveClick}>Add</button>
         </form>
@@ -53,6 +48,7 @@ function mapStateToProps({groups},{id}) {
         item: id !== 'new'
         ? groups.list.find(item => item.id == id)
         : { name: '', groupId: ''}
+
     }
 }
 
