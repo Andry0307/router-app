@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+.btn {
+	margin-left: 5px;
+}
+
+ul{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px !important;
+	width: 600px;
+}
+
+.home-page{
+	margin-top: 50px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+}
+
+li{
+	cursor: pointer;
+}
+
+.form-group {
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.add-new {
+	height: 100%;
+}
+
+.d-inline-flex {
+	margin-bottom: 10px;
+}
+
+body {
+	background: lightgray !important;
+}
