@@ -16,7 +16,6 @@ function StudentForm({onSave, item, groups}) {
     }
 
     function onChangeValue(target) {
-        console.log('groupId', [target.name], target.value);
         setStudentItem({
             ...studentItem,
             ...{[target.name]: target.value}
@@ -31,20 +30,14 @@ function StudentForm({onSave, item, groups}) {
                    value={studentItem.name}
                    onChange={({target})=> onChangeValue(target)}
             />
-            {/*<input className='form-control form-control-lg' type='text'*/}
-            {/*       placeholder='groupId'*/}
-            {/*       name='groupId'*/}
-            {/*       value={studentItem.groupId}*/}
-            {/*       onChange={({target}) => onChangeValue(target)}*/}
-            {/*/>*/}
-            <select name='groupId' className='form-control form-control-lg'
+            <select name='groupId' className='form-control form-control-lg' value={studentItem.groupId}
                     onChange={({target})=> onChangeValue(target)}>
-                <option>{}</option>
+                <option>group selection</option>
                 {groups.map(item =>
                     <option key={item.id} value={item.groupId}>{item.name}</option>
                 )}
             </select>
-            <button className='btn btn-success' onClick={onSaveClick}>Add</button>
+            <button className='btn btn-success float-right' onClick={onSaveClick}>Add</button>
         </form>
     );
 }

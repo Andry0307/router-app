@@ -1,23 +1,8 @@
-import {SAVE_GROUP, SEARCH_GROUP} from '../actions/groupActions';
+import {SAVE_GROUP, SEARCH_GROUP, DELETE_GROUP} from '../actions/groupActions';
+import groups from '../../groupsData';
 
 const initState = {
-    list: [
-        {
-            id: 1,
-            groupId: '001',
-            name: 'Java'
-        },
-        {
-            id: 2,
-            groupId: '002',
-            name: 'JavaScript'
-        },
-        {
-            id: 3,
-            groupId: '003',
-            name: 'React'
-        }
-    ],
+    list: groups,
     search: ''
 };
 
@@ -30,7 +15,7 @@ function editGroup(state, payload) {
 function addNewGroup(state, payload) {
         return {...state, list: [...state.list, {
                 id: Date.now(),
-                groupId: payload.groupId,
+                groupId: Date.now().toString(),
                 name: payload.name,
             }]}
 }
@@ -41,6 +26,10 @@ export default function (state = initState, {type, payload}) {
             return  payload.id ? editGroup(state, payload) : addNewGroup(state, payload);
         case SEARCH_GROUP:
             return {...state, search: payload};
+        case DELETE_GROUP:
+            return {...state, list: state.list.filter(item=>{
+                return item.id !== payload
+            })};
         default:
             return state;
     }

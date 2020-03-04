@@ -24,20 +24,14 @@ function GroupForm({item, onSave}) {
     }
 
     return (
-        <form className='form-group'>
+        <form className='form-group add-group'>
             <input className='form-control form-control-lg' type='text'
                    placeholder='name'
                    name='name'
                    value={groupItem.name}
                    onChange={({target})=> onChangeValue(target)}
             />
-            <input className='form-control form-control-lg' type='text'
-                   placeholder='groupId'
-                   name='groupId'
-                   value={groupItem.groupId}
-                   onChange={({target}) => onChangeValue(target)}
-            />
-            <button className='btn btn-success' onClick={onSaveClick}>Add</button>
+            <button className='btn btn-success float-right' onClick={onSaveClick}>Add</button>
         </form>
     );
 }

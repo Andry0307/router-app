@@ -1,28 +1,10 @@
-import {SAVE_STUDENT} from '../actions/studentActions';
+import {SAVE_STUDENT, SEARCH_STUDENT, DELETE_STUDENT, DELETE_GROUP_STUDENT} from '../actions/studentActions';
+import students from '../../studentsData';
+
 
 const initState = {
-    list: [
-        {
-            id: 1,
-            groupId: '001',
-            name: 'Petya'
-        },
-        {
-            id: 2,
-            groupId: '002',
-            name: 'Andry'
-        },
-        {
-            id: 3,
-            groupId: '003',
-            name: 'Koala'
-        },
-        {
-            id: 4,
-            groupId: '001',
-            name: 'tupack'
-        }
-    ]
+    list: students,
+    search: ''
 };
 
 function addNewStudent(state, payload) {
@@ -45,6 +27,16 @@ export default function (state = initState, {type, payload}) {
     switch (type) {
         case SAVE_STUDENT:
             return payload.id ? editStudent(state, payload) : addNewStudent(state, payload);
+        case SEARCH_STUDENT:
+            return {...state, search: payload};
+        case DELETE_STUDENT:
+            return {...state, list: state.list.filter(item => {
+                    return item.id !== payload ;
+                })};
+        case DELETE_GROUP_STUDENT:
+            return {...state, list: state.list.filter(item => {
+                    return item.groupId !== payload;
+                })};
         default:
             return state;
     }

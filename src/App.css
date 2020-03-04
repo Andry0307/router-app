@@ -61,6 +61,7 @@ li{
 }
 
 .form-group {
+	margin-top: 20px;
 	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
@@ -74,3 +75,19 @@ li{
 	margin-bottom: 10px;
 }
 
+.navbar-brand{
+	color: white;
+}
+
+.add-group {
+	display: flex;
+}
+
+select {
+	margin-top: 10px !important;
+	margin-bottom: 5px !important;
+}
+
+body {
+	background: rgba(1,1,1,0.05) !important;
+}

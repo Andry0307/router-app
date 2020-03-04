@@ -6,3 +6,9 @@ export const SEARCH_GROUP = 'SEARCH_GROUP';
  export function searchGroup(query) {
     return {type: SEARCH_GROUP, payload: query}
 }
+
+export const DELETE_GROUP = 'DELETE_GROUP';
+
+ export function deleteGroup(id) {
+    return {type: DELETE_GROUP, payload: id}
+ }
